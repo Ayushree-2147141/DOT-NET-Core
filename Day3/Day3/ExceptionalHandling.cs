@@ -2,7 +2,7 @@
 {
     internal class ExceptionHandling
     {
-        public static void Main(string[] args)
+        public static void Main1(string[] args)
         {
             try
             {
@@ -15,11 +15,11 @@
 
 
             }
-            catch(DivideByZeroException e)
+            catch (DivideByZeroException e)
             {
                 Console.WriteLine("Division by 0");
             }
-            catch(IndexOutOfRangeException ex1)
+            catch (IndexOutOfRangeException ex1)
             {
                 Console.WriteLine(ex1.ToString());
             }
