@@ -7,70 +7,92 @@ using System.Threading.Tasks;
 
 namespace Day4
 {
+    struct EmployeeBankDetails
+    {
+        public static int employeeId;
+        public static string employeeName;
+        public static int employeeBalance;
+
+        public void Register()
+        {
+            Console.WriteLine("\n enter employee id : ");
+            employeeId = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter you name : ");
+            employeeName = Console.ReadLine();
+
+           
+        }
+
+        public void AddMoney()
+        {
+            Console.WriteLine("\nEnter the amount to be added: ");
+            int amount = Convert.ToInt32(Console.ReadLine());
+
+            employeeBalance = employeeBalance + amount;
+
+        }
+
+        public void CheckBalance()
+        {
+            Console.WriteLine("Your balance amount :" + employeeBalance);
+
+        }
+
+        public void WithdrawMoney()
+        {
+            Console.WriteLine("\nEnter the amount to be withdrawn: ");
+            int wamount = Convert.ToInt32(Console.ReadLine());
+
+            if(wamount > employeeBalance)
+            {
+                Console.WriteLine("\nCan't withdraw!");
+                CheckBalance();
+            }
+            else
+            {
+                employeeBalance = employeeBalance - wamount;
+            }
+
+            
+        }
+    };
+
+    
+
     internal class BankingApp
     {
         public static void Main(string[] args)
         {
 
-            Hashtable personBank = new Hashtable();
-            
-
-            
-            
-
-               
-                        Console.WriteLine("Enter name : ");
-                        string name = Console.ReadLine();
-                        
-                        personBank.Add(name, 0);
-                        Console.WriteLine("Registered");
-
-                 
-                        
-                        Console.WriteLine("Enter amount to add :");
-                        int amt1 = Convert.ToInt32(Console.ReadLine());
-
-                        personBank.Add(name, amt1);
-            int newamt;
-            Console.WriteLine("do you want to add more ? ");
-            int ch = Convert.ToInt32(Console.ReadLine());
-            if(ch == 1)
+            EmployeeBankDetails emp = new EmployeeBankDetails();
+            int ch = 1;
+             
+            while(ch!=0)
             {
-                int amt = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("1.Register\n2.Add money\n3.Withdraw\n4.Check Balance\n5.Exit");
+                ch = Convert.ToInt32(Console.ReadLine());
 
-                newamt = amt + amt1;
-
-                personBank.Add(name, newamt);
-            }
-
-            //Console.WriteLine(newamt);
-
-
-            Console.WriteLine("do you want to withdraw amount ? ");
-            int ch1 = Convert.ToInt32(Console.ReadLine());
-            if (ch1 == 1)
-            {
-
-                int wamt = Convert.ToInt32(Console.ReadLine());
-                foreach(DictionaryEntry de in  personBank)
+                switch (ch)
                 {
-                    int newValue = Convert.ToInt32(de.Value) - wamt;
-                    personBank.Add(name, newValue);
+                    case 1:
+                        emp.Register();
+                        break;
+                    case 2:
+                        emp.AddMoney();
+                        break;
+                    case 3:
+                        emp.WithdrawMoney();
+                        break;
+                    case 4:
+                        emp.CheckBalance();
+                        break;
+                    default:
+                        Console.WriteLine("wrong choice!");
+                        break;
                 }
-                
+
             }
-
-
-            foreach (DictionaryEntry de in personBank)
-            {
-                Console.WriteLine(de.Key);
-                Console.WriteLine(de.Value);
-            }
-
-
-
-
-
 
         }
     }
