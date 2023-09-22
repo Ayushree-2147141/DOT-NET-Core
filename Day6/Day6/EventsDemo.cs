@@ -39,7 +39,7 @@ namespace Day6
 
     internal class EventsDemo
     {
-        public static void Main() 
+        public static void Main1() 
         {
             var Order = new Order();
             Order.onOrderCreated += Email.Send;
