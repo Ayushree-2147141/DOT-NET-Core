@@ -37,7 +37,7 @@ namespace Day5
     }
     internal class Jsontofile
     {
-        public static void Main(string[] args)
+        public static void Main1(string[] args)
         {
             string FilePath = "C:\\Users\\Administrator\\Desktop\\dotNET\\Day5\\Day5\\jsonfile.txt";
             Student s = new Student(1, "ayushree");
