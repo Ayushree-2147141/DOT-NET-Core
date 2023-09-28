@@ -96,7 +96,7 @@ namespace WebApp.Controllers
             //IQueryable query = db.Books.Skip(1);    
             //return data;
             //return skippedData;
-            //var data = db.Books.Take(1).ToList();
+            var data = db.Books.Take(1).ToList();
             var orderbyValueDesc = db.Books.OrderByDescending(x => x.BookId).ToList();
             var orderbyValueAsc = db.Books.OrderBy(x => x.BookId);
 
@@ -105,9 +105,17 @@ namespace WebApp.Controllers
             List <int> numbers1 = new List<int> { 1 }; //can use single when sure we have one item
             List <int> numbers2 = new List<int> (); //can use singleOrDefault when we are not sure about the number of items in LIST
 
-            var single = numbers1.Single();
-            //var single = numbers2.SingleOrDefault();    
-            return orderbyValueDesc;
+            //var single = numbers1.Single();
+            //var single = numbers2.SingleOrDefault();
+            //
+            //var first = numbers2.First(); cannot use this
+            var first = numbers1.First();
+            var firstorlast = numbers2.FirstOrDefault();
+
+            var last = numbers1.Last();
+            var lastordefault = numbers2.LastOrDefault();
+
+            return data;
         }
     }
 
