@@ -115,6 +115,26 @@ namespace WebApp.Controllers
             var last = numbers1.Last();
             var lastordefault = numbers2.LastOrDefault();
 
+
+            //SELECT
+            var selectedData = db.Books.Select(x => x.BookId);
+
+            var demoCollection = new List<int>() { 1,1, 2, 3, 4, 5, 6 };
+            var sum = demoCollection.Sum();
+
+            var distinctValues = demoCollection.Distinct();
+
+            var evenSum = demoCollection.Sum(x => { if (x % 2 == 0) { return x; } else { return 0; } });
+
+            //average
+            var avg = demoCollection.Average();
+            var max = demoCollection.Max(); 
+            var min = demoCollection.Min(); 
+            var count = demoCollection.Count(); 
+            //max
+            //min
+            //count
+
             return data;
         }
     }
