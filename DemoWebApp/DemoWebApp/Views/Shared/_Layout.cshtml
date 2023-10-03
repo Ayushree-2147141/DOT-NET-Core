@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/temp.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="mx-2">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">BMS</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">All Books <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Add Book</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Remove Book</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+
+    </header>
+    <div class="container">
+        <div class="row ">
+            <div class="col d-flex justify-content-center">
+                <form class="card p-2">
+                    <div class="form-group">
+                        <label for="bookname">Book Name </label>
+                        <input type="text" class="form-control" id="bookname" aria-describedby="emailHelp" placeholder="Enter bookname">
+                
+                    </div>
+                    <div class="form-group">
+                        <label for="authorname">Author Name </label>
+                        <input type="text" class="form-control" id="authorname" placeholder="Author name">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                </form>
+            </div>
+        </div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+</body>
+</html>

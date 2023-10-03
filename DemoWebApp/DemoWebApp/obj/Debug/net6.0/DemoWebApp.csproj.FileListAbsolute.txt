@@ -26,3 +26,6 @@ C:\Users\Administrator\Desktop\dotNET\DemoWebApp\DemoWebApp\obj\Debug\net6.0\ref
 C:\Users\Administrator\Desktop\dotNET\DemoWebApp\DemoWebApp\obj\Debug\net6.0\DemoWebApp.pdb
 C:\Users\Administrator\Desktop\dotNET\DemoWebApp\DemoWebApp\obj\Debug\net6.0\DemoWebApp.genruntimeconfig.cache
 C:\Users\Administrator\Desktop\dotNET\DemoWebApp\DemoWebApp\obj\Debug\net6.0\ref\DemoWebApp.dll
+C:\Users\Administrator\Desktop\dotNET\DemoWebApp\DemoWebApp\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\Administrator\Desktop\dotNET\DemoWebApp\DemoWebApp\obj\Debug\net6.0\DemoWebApp.csproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\dotNET\DemoWebApp\DemoWebApp\obj\Debug\net6.0\DemoWebApp.csproj.CopyComplete
