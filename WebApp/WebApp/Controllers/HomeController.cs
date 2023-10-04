@@ -73,6 +73,7 @@ namespace WebApp.Controllers
                     StudentBooks s = new StudentBooks();
                     s.Id = book.BookId;
                     s.BookName = book.BookName;
+
                     studentbooks.Add(s);
 
                 }
@@ -98,12 +99,16 @@ namespace WebApp.Controllers
             //return skippedData;
             var data = db.Books.Take(1).ToList();
             var orderbyValueDesc = db.Books.OrderByDescending(x => x.BookId).ToList();
+
+            //descending using two 
+            var descdata = db.Books.OrderByDescending(x => x.BookId).ThenBy(x => x.BookName).ToList();
+
             var orderbyValueAsc = db.Books.OrderBy(x => x.BookId);
 
             //var single = db.Books.SingleOrDefault
 
-            List <int> numbers1 = new List<int> { 1 }; //can use single when sure we have one item
-            List <int> numbers2 = new List<int> (); //can use singleOrDefault when we are not sure about the number of items in LIST
+            List<int> numbers1 = new List<int> { 1 }; //can use single when sure we have one item
+            List<int> numbers2 = new List<int>(); //can use singleOrDefault when we are not sure about the number of items in LIST
 
             //var single = numbers1.Single();
             //var single = numbers2.SingleOrDefault();
@@ -119,7 +124,8 @@ namespace WebApp.Controllers
             //SELECT
             var selectedData = db.Books.Select(x => x.BookId);
 
-            var demoCollection = new List<int>() { 1,1, 2, 3, 4, 5, 6 };
+            var demoCollection = new List<int>() { 1, 1, 2, 3, 4, 5, 6 };
+            var demoCollection2 = new List<int>() { 1, 3, 6 , 10, 12};
             var sum = demoCollection.Sum();
 
             var distinctValues = demoCollection.Distinct();
@@ -130,12 +136,46 @@ namespace WebApp.Controllers
             var avg = demoCollection.Average();
             var max = demoCollection.Max(); 
             var min = demoCollection.Min(); 
-            var count = demoCollection.Count(); 
+            var count = demoCollection.Count();
+
+
+            var groupByCollection = demoCollection.GroupBy(x => x);
+            var bookdata = db.Books;
+            var bookCount = bookdata.GroupBy(x => x.BookName).Count();
+
+
+            //foreach (var line in data.GroupBy(info => info.BookName)
+            //            .Select(group => new {
+            //                BookName = group.Key,
+            //                BookCount = group.Count()
+            //            })
+            //            .OrderBy(x => x.BookName))
+            //{ 
+            //    Console.WriteLine(line);
+            //}
+
+            var intersect = demoCollection.Intersect(demoCollection2);
+
+            //var bookCount = demoCollection.GroupBy(x => );
             //max
             //min
             //count
 
             return data;
+        }
+
+        [HttpPost]
+        [Route("/validate")]
+        public IActionResult SomeApi(SampleRequest samplereq)
+        {
+            if(ModelState.IsValid)
+            {
+                return Ok("validated values");
+            }
+            else
+            {
+                return Ok("invalid");
+            }
         }
     }
 
