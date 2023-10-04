@@ -1,5 +1,9 @@
 ﻿@model IEnumerable<DemoWebApp.Models.Books>
 
+@*
+@ViewBag.Message
+@ViewData["Msg"]*@
+
     <div class="d-flex justify-content-evenly">
         <div class="row my-2">
 @{
@@ -11,7 +15,8 @@
             
             <div class="col">
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="https://tse2.mm.bing.net/th/id/OIP.3ozWeRNQgEJ_tB3D7ImTuwHaFR?w=275&h=196&c=7&r=0&o=5&pid=1.7" alt="Card image cap">
+                        
+                        <img class="card-img-top" src=@item.courseUrl alt="Card image cap" height="200px">
                         <div class="card-body ">
                             <p class="card-title text-center">@item.courseName</p>
 

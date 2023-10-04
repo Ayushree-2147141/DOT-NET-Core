@@ -24,6 +24,12 @@ namespace DemoWebApp.Controllers
                 var data = client.GetAsync("https://localhost:7267/api/Home").Result.Content.ReadAsStringAsync().Result;
                 booklist = JsonConvert.DeserializeObject<IEnumerable<Books>>(data);
             }
+            //types of data 
+            ViewBag.Message = "Ayushree";
+            ViewData["Msg"] = "I am from ViewData";
+            TempData["Msg"] = "From TempData";
+
+
             return View(booklist);
         }
     }

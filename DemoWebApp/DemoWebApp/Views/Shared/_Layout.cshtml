@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -17,14 +19,21 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">All Books <span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-action="Index" asp-controller="Home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Add Book</a>
+                        <a class="nav-link text-dark" asp-area="" asp-action="Index" asp-controller="Book">Add Book</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Remove Book</a>
+                        <a class="nav-link text-dark" asp-area="" asp-action="Index" asp-controller="RemoveBook">Remove Book</a>
+                    </li>
+
+                    <li class="nav-item" id="btn-login">
+                        <a class="nav-link text-dark" asp-area="" asp-action="Index" asp-controller="Login">Login</a>
+                    </li>
+                    <li class="nav-item" id="btn-logout">
+                        <a class="nav-link text-dark">Logout</a>
                     </li>
                     
                 </ul>
@@ -33,26 +42,35 @@
 
     </header>
     <div class="container">
-        <div class="row ">
-            <div class="col d-flex justify-content-center">
-                <form class="card p-2">
-                    <div class="form-group">
-                        <label for="bookname">Book Name </label>
-                        <input type="text" class="form-control" id="bookname" aria-describedby="emailHelp" placeholder="Enter bookname">
-                
-                    </div>
-                    <div class="form-group">
-                        <label for="authorname">Author Name </label>
-                        <input type="text" class="form-control" id="authorname" placeholder="Author name">
-                    </div>
-
-                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
-                </form>
-            </div>
-        </div>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 </body>
 </html>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+<script>
+    $(document).ready(function () {
+        console.log("Hi");
+        $.ajax({
+            type: "GET",
+            url: "/Login/CheckLogin",
+            success: function (data) {
+                if (data.username) {
+                    $('#btn-login').hide();
+                } else {
+                    $('#btn-logout').hide();
+                }
+            },
+            error: function (data) {
+                console.log(data);
+            }
+
+        });
+    });
+</script>
